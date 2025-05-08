@@ -1,0 +1,14 @@
+create folder=>git
+
+open terminal=>
+>mkdir part_a
+>cd part_a
+>git --version 
+create file in part_a
+>git init
+>git add .
+>git status
+>git remote add origin "link of your repository"
+>git commit -m "any message"
+>git push -u origin master
+>git status
