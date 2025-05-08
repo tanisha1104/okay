@@ -1,0 +1,22 @@
+Install Apache Web Server-EC2.
+Type following commands on terminal
+>sudo dnf update -y
+>sudo dnf install httpd -y
+>sudo systemctl start httpd
+>sudo systemctl enable httpd
+ Now Apache is installed!!
+ Copy public IPv4 address
+ Paste it in browser
+ For website-EC2
+ >sudo yum update -y
+ >sudo yum install httpd -y
+ >sudo systemctl start httpd
+ >sudo systemctl enable httpd
+ Apache is now running
+ Now create simple website
+ Type command
+ > sudo nano /var/www/html/index.html
+This opens text editor
+Now type html code
+Press ctrl+O =>Enter=>ctrl+X
+Then copy public IPv4 address and run
