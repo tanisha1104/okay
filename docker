@@ -1,0 +1,22 @@
+
+open terminal=>
+> sudo apt update
+> sudo apt install docker.io
+>sudo usermod -aG docker #USER
+>sudo docker pull openjdk
+>sudo docker run --name Java -it -d openjdk
+>sudo docker ps
+>sudo docker exec -it Java jshell
+jshell>system.out.println("Hello");
+jshell>int a =10;
+jshell>int b=20;
+jshell>System.out.println(a+b);
+/exit
+>docker stop copy containerid(To stop docker image)
+> docker pull python
+> docker images
+> docker run -it python
+>>> a=10
+>>> b=10
+>>> C=a*b
+>>>print(C)
