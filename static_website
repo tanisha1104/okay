@@ -1,0 +1,48 @@
+steps:how to run
+create foldeer static_website =>opeen trminal=>
+cmd=>
+>npm init -y
+>npm install express
+create folder public/
+then add file index.html,style.css,script.js
+outside this folder create server.js
+write code
+go to terminal
+>node server.js
+
+#index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to ISQUAREIT</h1>
+    <script src="script.js"></script>
+</body>
+</html>
+
+#script.js
+console.log('website loaded successfully');
+
+#style.css
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: white;
+    padding:20px;
+    text-align: center;
+}
+
+#server.js
+const express=require('express');
+const app=express();
+const PORT=3000;
+
+app.use(express.static('public'));
+
+app.listen(PORT,()=>{
+    console.log(`server is running at http://localhost:${PORT}`);
+});
