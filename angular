@@ -1,0 +1,63 @@
+#commands.txt
+>npm --version
+>npm install -g @angular/cli@latest
+>ng new part_c
+choose css=>press Enter
+write code in app.component.html,app.component.ts,app.component.css
+
+then save all filees
+then go to terminal
+>cd part_c
+>ng serve
+
+
+#app.component.css
+input{
+    width:400px;
+    height:25px;
+    margin:10px;
+    padding:5px;
+}
+
+#app.componenent.html
+<h1>{{title}}</h1>
+<input type="text" #name placeholder="Enter ur name" name="Name"><br>
+<input type="text" #address placeholder="Enter address" name="Address"><br>
+<input type="text" #contact placeholder="Enter ur contact" name="Contact"><br>
+<input type="email" #email placeholder="Enter ur email" name="Email"><br>
+<input type="password" #password placeholder="Enter ur password" name="Password"><br>
+<button (click)="getValue(name.value,address.value,contact.value,email.value)">Register</button>
+
+<h1>Your registered data</h1><br>
+<p>Name:{{displayname}}</p>
+<p>Address:{{displayaddress}}</p>
+<p>Contact:{{displaycontact}}</p>
+<p>Email:{{displayemail}}</p>
+
+
+#app.component.ts
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  title = 'Registration Form';
+
+  displayname="";
+  displayaddress="";
+  displaycontact="";
+  displayemail="";
+
+  getValue(name:string,address:string,contact:string,email:string){
+    this.displayname=name;
+    this.displayaddress=address;
+    this.displaycontact=contact;
+    this.displayemail=email;
+
+  }
+}
