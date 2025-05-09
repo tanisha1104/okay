@@ -21,6 +21,29 @@
                 $("#div1").load("http://127.0.0.1:5500/ajax2.html");
             });
         });
+
+//deploy on ubuntu terminal:-
+
+
+sudo apt update
+sudo apt install nodejs npm
+sudo npm install -g http-server
+
+mkdir user_registration && cd user_registation
+
+nano register.html (paste your code here)
+
+ctrl o
+enter
+ctrl x
+
+nano list.html (paste list code here)
+
+ctrl o
+enter
+ctrl x
+
+http-server -p 8080
     </script>
 </head>
 <body>
