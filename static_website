@@ -1,5 +1,5 @@
 steps:how to run
-create foldeer static_website =>opeen trminal=>
+create foldeer static_website =>open trminal=>
 cmd=>
 >npm init -y
 >npm install express
@@ -46,3 +46,129 @@ app.use(express.static('public'));
 app.listen(PORT,()=>{
     console.log(`server is running at http://localhost:${PORT}`);
 });
+
+how to deploy
+✅ 1. Create an AWS EC2 Instance
+a. Sign in to AWS Console
+Go to: https://aws.amazon.com
+
+Log in with your AWS account.
+
+b. Go to EC2 Dashboard
+Navigate to EC2 from the AWS Console.
+
+Click on "Instances" > Launch instance
+
+c. Launch a New Instance
+Name: nodejs-static-site
+
+AMI (OS): Choose Ubuntu Server 22.04 LTS or Amazon Linux 2
+
+Instance Type: t2.micro (Free Tier eligible)
+
+Key Pair: Create or choose an existing key pair
+
+Network Settings:
+
+Click Edit on security group
+
+Add a new Inbound Rule:
+
+Type: Custom TCP
+
+Port Range: 3000
+
+Source: Anywhere (0.0.0.0/0) or My IP
+
+Click Launch Instance
+
+✅ 2. Connect to Your Instance
+After the instance is running:
+
+a. Find Public IP
+Go to the instance detail page.
+
+Copy the Public IPv4 address
+
+b. Connect via SSH
+From your terminal (on your local computer):
+
+bash
+Copy
+Edit
+cd path/to/your-key-pair.pem
+chmod 400 your-key-pair.pem
+
+# Replace PUBLIC_IP with your actual EC2 IP
+ssh -i "your-key-pair.pem" ubuntu@PUBLIC_IP
+✅ 3. Install Node.js and npm
+On the EC2 terminal:
+
+For Ubuntu:
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install nodejs npm -y
+Verify installation:
+bash
+Copy
+Edit
+node -v
+npm -v
+✅ 4. Upload Your Project to EC2
+You have two main options:
+
+Option 1: Use scp (secure copy)
+From your local terminal (outside EC2):
+
+bash
+Copy
+Edit
+scp -i "your-key-pair.pem" -r static_website ubuntu@PUBLIC_IP:~/
+Option 2: Use GitHub (if your project is on GitHub)
+On EC2:
+
+bash
+Copy
+Edit
+sudo apt install git -y
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+✅ 5. Run Your Server
+On your EC2 instance:
+
+bash
+Copy
+Edit
+cd static_website   # or your cloned repo directory
+npm install
+node server.js
+➡ You should see:
+server is running at http://localhost:3000
+
+✅ 6. Open Port 3000 in Security Group (If Not Done Earlier)
+If you didn’t open port 3000 before:
+
+Go to EC2 > Security Groups
+
+Select your instance’s security group
+
+Click Edit Inbound Rules
+
+Add a rule:
+
+Type: Custom TCP
+
+Port Range: 3000
+
+Source: 0.0.0.0/0 (or My IP)
+
+✅ 7. Access Your Website in Browser
+Open your browser and go to:
+
+cpp
+Copy
+Edit
+http://<your-ec2-public-ip>:3000
+✅ You should see your static website!
