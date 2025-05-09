@@ -1,0 +1,10 @@
+create 2 VM in oracle vm
+
+> if config
+> ls
+> touch file.txt
+> nano  file.txt
+> cat file.txt
+> scp file.txt vagrant@10.0.2.16:/home/vagrant
+Asking for authentication:yees
+password :vagrant
